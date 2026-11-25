@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Industry Hub</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+:root{--navy:#0b1f3a;--navy2:#13305a;--em:#10b981;--bg:#f6f8fb;--card:#fff;--tx:#0b1f3a;--mut:#5b6b82;--line:#dce3ec;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#08172b;--card:#0f2644;--tx:#eaf1fa;--mut:#9db0c8;--line:#1e3a5f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#08172b;--card:#0f2644;--tx:#eaf1fa;--mut:#9db0c8;--line:#1e3a5f;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:Sora,system-ui,sans-serif;line-height:1.15;margin:0}
+.w{max-width:1040px;margin:0 auto;padding:0 20px}
+header{background:var(--navy);color:#fff}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;gap:12px}
+nav b{font-family:Sora,sans-serif;font-size:18px}nav b i{color:var(--em);font-style:normal}
+.lang button{background:none;border:1px solid #ffffff55;color:#fff;padding:4px 10px;border-radius:6px;cursor:pointer}
+.lang button.on{background:var(--em);border-color:var(--em);color:#04281c}
+.hero{padding:48px 0 56px;display:grid;gap:32px;grid-template-columns:1.1fr .9fr;align-items:center}
+.hero h1{font-size:clamp(30px,5vw,50px)}
+.hero p{color:#c4d3e8;max-width:46ch}
+.btn{display:inline-block;padding:12px 20px;border-radius:8px;font-weight:500;text-decoration:none;border:1px solid transparent;cursor:pointer;font:inherit}
+.p{background:var(--em);color:#04281c}.s{border-color:#ffffff66;color:#fff}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.net{width:100%;height:auto}
+.net text{fill:#fff;font:12px "IBM Plex Sans",sans-serif}
+.flow{stroke-dasharray:6 6;animation:d 1.2s linear infinite}
+@keyframes d{to{stroke-dashoffset:-12}}
+@media(prefers-reduced-motion:reduce){.flow{animation:none}}
+.note{background:#fef3c7;color:#6b4a00;border-radius:8px;padding:8px 12px;font-size:14px;margin:0 0 16px}
+section{padding:48px 0}section h2{font-size:clamp(24px,3.5vw,34px);margin-bottom:8px}
+.sub{color:var(--mut);margin:0 0 24px;max-width:60ch}
+.mods{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.mod{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--em);border-radius:8px;padding:14px 16px}
+.mod h3{font-size:16px}.mod p{margin:4px 0 0;color:var(--mut);font-size:14px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--tx);cursor:pointer;font:inherit}
+.tabs button[aria-selected=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:20px}
+.kpi{border:1px solid var(--line);border-radius:8px;padding:10px 12px}.kpi b{font:700 22px Sora,sans-serif;display:block}.kpi span{color:var(--mut);font-size:13px}
+.bars{display:flex;align-items:flex-end;gap:8px;height:150px;border-bottom:1px solid var(--line)}
+.bars div{flex:1;background:var(--em);border-radius:4px 4px 0 0;min-width:0;transition:height .5s}
+.bars div:nth-child(odd){background:var(--navy2)}
+.lbl{display:flex;gap:8px;color:var(--mut);font-size:12px}.lbl span{flex:1;text-align:center}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+select,input[type=range]{font:inherit;padding:6px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--tx)}
+.li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.li small{color:var(--mut);display:block}.li b{white-space:nowrap}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.chips button{border:1px solid var(--em);background:none;color:var(--tx);padding:8px 12px;border-radius:8px;cursor:pointer;font:inherit;text-align:left}
+.ans{border-left:4px solid var(--em);padding:8px 14px;background:var(--bg);border-radius:0 8px 8px 0;min-height:60px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;counter-reset:s;padding:0;list-style:none}
+.steps li{counter-increment:s;padding-left:44px;position:relative}
+.steps li:before{content:counter(s);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;background:var(--em);color:#04281c;display:grid;place-items:center;font:700 14px Sora,sans-serif}
+.cta{background:var(--navy);color:#fff;border-radius:16px;padding:36px 24px;text-align:center}
+footer{padding:28px 0;color:var(--mut);font-size:14px}
+button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid var(--em);outline-offset:2px}
+@media(max-width:760px){.hero{grid-template-columns:1fr}}
+.nl{display:flex;gap:18px;font-size:14px}.nl a{color:#c4d3e8;text-decoration:none}.nl a:hover{color:#fff}
+.lang{display:flex;gap:4px}.lang button{padding:6px 10px;font:inherit;font-size:13px}
+.hw{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:0;margin:0;list-style:none}
+.st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.st .ic{position:relative;display:grid;place-items:center;width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,var(--navy),var(--navy2));color:var(--em);margin-bottom:14px}
+.st .ic svg{width:30px;height:30px}
+.st .ic em{position:absolute;top:-8px;right:-8px;width:24px;height:24px;border-radius:50%;background:var(--em);color:#04281c;font:700 12px Sora,sans-serif;display:grid;place-items:center}
+.st h3{font-size:16px;margin-bottom:4px}.st p{margin:0;color:var(--mut);font-size:14px}
+@media(max-width:760px){.nl{display:none}.li{flex-direction:column;gap:4px}}
+</style></head><body>
+<header><div class="w">
+<nav><b>INDUSTRY <i>HUB</i></b><div class="nl"><a href="#how" data-i="n1"></a><a href="#mod" data-i="n2"></a><a href="#demo" data-i="n3"></a></div>
+<div class="lang" role="group" aria-label="Language"><button data-l="0" title="O‘zbek">UZ</button><button data-l="1" title="English">EN</button><button data-l="2" title="Русский">RU</button></div></nav>
+<div class="hero"><div><h1 data-i="h1"></h1><p data-i="sub"></p>
+<div class="btns"><a class="btn p" href="#cta" data-i="c1"></a><a class="btn s" href="#demo" data-i="c2"></a></div></div>
+<svg class="net" viewBox="0 0 360 260" role="img" data-a="net">
+<g stroke="#10b981" stroke-width="2" fill="none"><path class="flow" d="M90 60L180 130"/><path class="flow" d="M180 130L270 60"/><path class="flow" d="M180 130L90 200"/><path class="flow" d="M180 130L270 200"/><path class="flow" d="M270 200L90 200"/></g>
+<g fill="#13305a" stroke="#10b981" stroke-width="2"><circle cx="90" cy="60" r="40"/><circle cx="270" cy="60" r="40"/><circle cx="90" cy="200" r="40"/><circle cx="270" cy="200" r="40"/><circle cx="180" cy="130" r="42" fill="#10b981"/></g>
+<g text-anchor="middle"><text x="90" y="64" data-i="s1"></text><text x="270" y="64" data-i="s2"></text><text x="90" y="204" data-i="s3"></text><text x="270" y="204" data-i="s4"></text><text x="180" y="134" style="fill:#04281c;font-weight:600" data-i="s5"></text></g></svg>
+</div></div></header>
+<main>
+<section id="mod"><div class="w"><h2 data-i="mh"></h2><p class="sub" data-i="ms"></p><div class="mods" id="mods"></div></div></section>
+<section id="demo" style="background:var(--card)"><div class="w"><h2 data-i="dh"></h2><p class="note" data-i="note"></p>
+<div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-t="d" data-i="t0"></button><button role="tab" aria-selected="false" data-t="r">RawMaterial</button><button role="tab" aria-selected="false" data-t="a" data-i="t2"></button></div>
+<div class="panel" id="p"></div></div></section>
+<section id="how"><div class="w"><h2 data-i="hw"></h2><p class="sub" data-i="hws"></p><ol class="hw" id="hw"></ol></div></section>
+<section><div class="w"><div class="cta" id="cta"><h2 data-i="c1"></h2><p style="color:#c4d3e8" data-i="ctp"></p>
+<form id="f" class="btns" style="justify-content:center" novalidate><input id="em" type="email" data-p="eml" data-a="eml" style="padding:12px;border-radius:8px;border:0;min-width:240px;max-width:100%;font:inherit"><button class="btn p" data-i="rq"></button></form><p id="fm" role="status" style="min-height:24px"></p></div></div></section>
+</main>
+<footer><div class="w" data-i="ft"></div></footer>
+<script>
+const L=['uz','en','ru'];
+const T={
+n1:["Qanday ishlaydi","How it works","Как это работает"],n2:["Modullar","Modules","Модули"],n3:["Demo","Demo","Демо"],
+h1:["Bitta platforma. Cheksiz sanoat imkoniyatlari.","One Platform. Endless Industrial Possibilities.","Одна платформа. Безграничные промышленные возможности."],
+sub:["Industry Hub ishlab chiqaruvchilar, yetkazib beruvchilar, xaridorlar va qayta ishlash hamkorlarini bog‘lab, aqlli, samarali va barqaror sanoat ekotizimini quradi.","Industry Hub connects manufacturers, suppliers, buyers, and recycling partners to build a smarter, more efficient, and sustainable industrial ecosystem.","Industry Hub объединяет производителей, поставщиков, покупателей и партнёров по переработке, создавая более умную, эффективную и устойчивую промышленную экосистему."],
+c1:["Industry Hub’ga qo‘shiling","Join Industry Hub","Присоединиться к Industry Hub"],c2:["Platformani ko‘rish","Explore Platform","Изучить платформу"],
+net:["Yetkazib beruvchi, ishlab chiqaruvchi, xaridor va qayta ishlovchi bir tizimda bog‘langan","Supplier, manufacturer, buyer and recycler connected in a loop","Поставщик, производитель, покупатель и переработчик связаны в единую цепь"],
+s1:["Yetkazuvchi","Supplier","Поставщик"],s2:["Xaridor","Buyer","Покупатель"],s3:["Qayta ishlash","Recycler","Переработка"],s4:["Logistika","Logistics","Логистика"],s5:["AI moslik","AI Match","ИИ-подбор"],
+mh:["Yetti modul, bitta ish maydoni","Seven modules, one workspace","Семь модулей — одно рабочее пространство"],
+ms:["Har bir modul sanoat zanjirining bir bosqichini qamrab oladi.","Each module covers a step of the industrial chain.","Каждый модуль охватывает один этап промышленной цепочки."],
+dh:["Platformani sinab ko‘ring","Try the platform","Попробуйте платформу"],
+note:["Demo rejim: quyidagi barcha raqamlar, e’lonlar va AI javoblari namunaviy ma’lumotlar, haqiqiy kompaniyalar yoki statistika emas.","Demo mode: all numbers, listings and AI replies below are sample data, not real companies or statistics.","Демо-режим: все цифры, объявления и ответы ИИ ниже — примеры, а не реальные компании или статистика."],
+t0:["Boshqaruv paneli","Dashboard","Панель"],t2:["AI sanoat tanlovi","AI Industry Match","ИИ-подбор партнёров"],
+k1:["Kompaniyalar (namuna)","Companies (sample)","Компании (пример)"],k2:["E’lonlar (namuna)","Listings (sample)","Объявления (пример)"],k3:["Qayta ishlatilgan (namuna)","Reused (sample)","Повторно использовано (пример)"],k4:["Ochiq vakansiyalar (namuna)","Open jobs (sample)","Открытые вакансии (пример)"],
+u:["t","t","т"],
+ch:["Qayta ishlash faolligi, oyiga tonna (namuna)","Recycling activity, tonnes per month (sample)","Активность переработки, тонн в месяц (пример)"],
+ty:["Turi","Type","Тип"],al:["Hammasi","All","Все"],mx:["Maks. narx","Max price","Макс. цена"],
+av:["t mavjud (namuna)","t available (sample)","т в наличии (пример)"],
+no:["Namunaviy e’lonlar topilmadi. Narx chegarasini oshiring yoki boshqa tur tanlang.","No sample listings match. Raise the price limit or choose another type.","Подходящих примеров нет. Увеличьте лимит цены или выберите другой тип."],
+n2a:["Demo rejim: AI API ulanmagan. Bu javoblar oldindan yozilgan namunalar.","Demonstration mode: no AI API is connected. These replies are pre-written samples.","Демо-режим: ИИ API не подключён. Ответы — заранее написанные примеры."],
+pk:["Namunaviy tavsiyani ko‘rish uchun savolni tanlang.","Pick a question to see a sample recommendation.","Выберите вопрос, чтобы увидеть пример рекомендации."],
+hw:["Qanday ishlaydi","How it works","Как это работает"],hws:["Industry Hub’dan foydalanishni 7 oddiy qadamda boshlang.","Get started with Industry Hub in 7 simple steps.","Начните работу с Industry Hub за 7 простых шагов."],
+ctp:["Erta kirish ishlab chiqaruvchilar, yetkazib beruvchilar, qayta ishlovchilar va logistika provayderlari uchun ochiq.","Early access is open to manufacturers, suppliers, recyclers and logistics providers.","Ранний доступ открыт для производителей, поставщиков, переработчиков и логистических компаний."],
+eml:["Ish elektron pochtasi","Work email","Рабочая почта"],rq:["Kirishni so‘rash","Request access","Запросить доступ"],
+ok:["Rahmat! Bu demo hozircha elektron pochtalarni saqlamaydi: ro‘yxatdan o‘tish serveri ulanmagan.","Thanks. This demo does not store emails yet; the signup backend is not connected.","Спасибо! Демо пока не сохраняет адреса: сервер регистрации не подключён."],
+er:["To‘g‘ri ish elektron pochtasini kiriting, masalan: name@company.uz.","Enter a valid work email, for example name@company.uz.","Введите корректную рабочую почту, например: name@company.uz."],
+ft:["Industry Hub · Toshkent, O‘zbekiston · hello@industryhub.example (namuna) · Demo versiya: server (Supabase) ulanmagan.","Industry Hub · Tashkent, Uzbekistan · hello@industryhub.example (placeholder) · Demo build: backend (Supabase auth and database) is not connected.","Industry Hub · Ташкент, Узбекистан · hello@industryhub.example (пример) · Демо-версия: сервер (Supabase) не подключён."],
+pt:["/t","/t","/т"]};
+const MD=[["RawMaterial",["Xomashyoni sotib oling va soting","Buy and sell raw materials","Покупка и продажа сырья"]],["MarketHub",["Tayyor mahsulotlar bozori","Finished products marketplace","Рынок готовой продукции"]],["ReUse",["Sanoat qo‘shimcha mahsulotlari almashinuvi","Exchange industrial by-products","Обмен промышленными побочными продуктами"]],["SmartStock",["Zaxira nazorati va kam qoldiq ogohlantirishlari","Inventory and low-stock alerts","Складской учёт и оповещения о низком остатке"]],["WorkLink",["Ish o‘rinlari, amaliyot, o‘qitish","Jobs, internships, training","Вакансии, стажировки, обучение"]],["TechCare",["Uskunalarga texnik xizmat","Equipment maintenance","Обслуживание оборудования"]],["EcoControl",["Energiya, suv va chiqindilarni nazorat qilish","Energy, water and waste tracking","Учёт энергии, воды и отходов"]]];
+const ST=[[["Ro‘yxatdan o‘ting","Industry Hub’da hisob yarating va rolingizni tanlang."],["Register on Industry Hub","Create an account and choose your role."],["Зарегистрируйтесь","Создайте аккаунт на Industry Hub и выберите роль."]],
+[["Kompaniya profilini yarating","Kompaniya yoki ishlab chiqaruvchi haqida ma’lumot kiriting."],["Create a company profile","Describe your company or manufacturing business."],["Создайте профиль компании","Расскажите о своей компании или производстве."]],
+[["Mahsulot va xizmatlarni qo‘shing","Nimani sotishingiz yoki taklif qilishingizni e’lon qiling."],["Add products and services","Publish what you sell or offer."],["Добавьте товары и услуги","Опубликуйте то, что вы продаёте или предлагаете."]],
+[["Hamkorlarni qidiring","Yetkazib beruvchilar, ishlab chiqaruvchilar va biznes hamkorlarni toping."],["Search for partners","Find suppliers, manufacturers and business partners."],["Ищите партнёров","Найдите поставщиков, производителей и бизнес-партнёров."]],
+[["Kompaniyalar bilan bog‘laning","Qiziqqan kompaniyalarga ulanish so‘rovini yuboring."],["Connect with companies","Send a connection request to companies that interest you."],["Связывайтесь с компаниями","Отправляйте запросы на связь интересным компаниям."]],
+[["So‘rov va takliflar yuboring","Biznes so‘rovlari va hamkorlik takliflarini jo‘nating."],["Send inquiries and proposals","Send business inquiries and cooperation requests."],["Отправляйте запросы","Направляйте деловые запросы и предложения о сотрудничестве."]],
+[["Muloqot qiling va hamkorlik o‘rnating","Muzokara olib boring va kelishuvga erishing."],["Communicate and partner","Negotiate terms and establish partnerships."],["Общайтесь и заключайте партнёрства","Ведите переговоры и устанавливайте партнёрство."]]];
+const IC=['<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/>','<path d="M3 21V10l6 4v-4l6 4V5h6v16z"/>','<path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/>','<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>','<path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/>','<path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/>','<path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12z"/>'];
+const MN=[["Qarag‘ay qirindilari","Pine offcuts","Обрезки сосны"],["Po‘lat list 2 mm","Steel sheet 2 mm","Стальной лист 2 мм"],["PET parchalari","PET flakes","Хлопья ПЭТ"],["Paxta chiqindisi","Cotton waste","Хлопковые отходы"],["Kraft qog‘oz rulonlari","Kraft paper rolls","Рулоны крафт-бумаги"],["Kungaboqar po‘chog‘i","Sunflower husk","Подсолнечная лузга"]];
+const TY=[["Yog‘och","Wood","Дерево"],["Metall","Metal","Металл"],["Plastik","Plastic","Пластик"],["Mato","Fabric","Ткань"],["Qog‘oz","Paper","Бумага"],["Qishloq xo‘jaligi","Agricultural","Сельхоз"]];
+const CI=[["Samarqand","Samarkand","Самарканд"],["Toshkent","Tashkent","Ташкент"],["Farg‘ona","Fergana","Фергана"],["Namangan","Namangan","Наманган"],["Andijon","Andijan","Андижан"]];
+const mats=[[0,0,40,0,120],[1,1,900,1,30],[2,2,650,2,15],[3,3,300,3,22],[4,4,520,1,9],[5,5,60,4,80]];
+const MO=[["Iyun","Iyul","Avg","Sen","Okt","Noy"],["Jun","Jul","Aug","Sep","Oct","Nov"],["Июн","Июл","Авг","Сен","Окт","Ноя"]];
+const data=[42,55,48,70,64,82];
+const Q=[[["Toshkent yaqinida po‘lat list kim yetkazib bera oladi?","Namunaviy moslik: A yetkazib beruvchi (Toshkent, 30 t, $900/t, 2 kunda yetkazish). Solishtirilgan omillar: material, miqdor, narx, joylashuv, yetkazib berish."],["Who can supply steel sheet near Tashkent?","Sample match: Supplier A (Tashkent, 30 t, $900/t, delivery in 2 days). Factors compared: material, quantity, price, location, delivery."],["Кто может поставить стальной лист рядом с Ташкентом?","Пример совпадения: поставщик A (Ташкент, 30 т, $900/т, доставка за 2 дня). Сравниваемые факторы: материал, количество, цена, расположение, доставка."]],
+[["Yog‘och qirindilarimizni kim qayta ishlata oladi?","Namunaviy moslik: Samarqanddagi mebel ustaxonasiga yiliga taxminan 100 t qarag‘ay qirindisi kerak. Mumkin tejam: har chorakda 40 t chiqindi."],["Who can reuse our wood offcuts?","Sample match: a furniture workshop in Samarkand needs about 100 t of pine offcuts a year. Potential saving: 40 t of waste per quarter."],["Кто может повторно использовать наши древесные обрезки?","Пример совпадения: мебельной мастерской в Самарканде нужно около 100 т сосновых обрезков в год. Возможная экономия: 40 т отходов в квартал."]],
+[["Elektr sarfini qanday kamaytirish mumkin?","Namunaviy xulosa: tungi smena yuklamasi kunduzgi bazadan 2,1 baravar yuqori. Avval bekor turgan uskunalarni tekshiring."],["How can we cut electricity use?","Sample insight: your night-shift load is 2.1x the day baseline. Check idle machines first."],["Как сократить потребление электроэнергии?","Пример вывода: нагрузка в ночную смену в 2,1 раза выше дневной базы. Сначала проверьте простаивающее оборудование."]]];
+let lg=0;try{lg=Math.max(0,L.indexOf(localStorage.getItem('ih-lang')))}catch(e){}
+const S={tab:'d',cat:-1,pr:1000,ans:-1,fm:null};
+const t=k=>T[k][lg];const P=document.getElementById('p');
+function dash(){P.innerHTML=`<div class="kpis"><div class="kpi"><b>128</b><span>${t('k1')}</span></div><div class="kpi"><b>342</b><span>${t('k2')}</span></div><div class="kpi"><b>56 ${t('u')}</b><span>${t('k3')}</span></div><div class="kpi"><b>19</b><span>${t('k4')}</span></div></div><h3 style="font-size:16px;margin-bottom:10px">${t('ch')}</h3><div class="bars" role="img" aria-label="${t('ch')}: ${data.join(', ')}">${data.map(v=>`<div style="height:${v}%" title="${v} ${t('u')}"></div>`).join('')}</div><div class="lbl">${MO[lg].map(m=>`<span>${m}</span>`).join('')}</div>`}
+function raw(){P.innerHTML=`<div class="row"><label>${t('ty')} <select id="ct"><option value="-1">${t('al')}</option>${TY.map((c,i)=>`<option value="${i}"${S.cat==i?' selected':''}>${c[lg]}</option>`).join('')}</select></label><label>${t('mx')}: $<span id="pv">${S.pr}</span> <input id="pr" type="range" min="10" max="1000" value="${S.pr}"></label></div><div id="ls"></div>`;
+const r=()=>{S.cat=+ct.value;S.pr=+pr.value;pv.textContent=S.pr;const l=mats.filter(m=>(S.cat<0||m[1]==S.cat)&&m[2]<=S.pr);ls.innerHTML=l.length?l.map(m=>`<div class="li"><div>${MN[m[0]][lg]}<small>${TY[m[1]][lg]} · ${CI[m[3]][lg]} · ${m[4]} ${t('av')}</small></div><b>$${m[2]}${t('pt')}</b></div>`).join(''):`<p>${t('no')}</p>`};ct.onchange=pr.oninput=r;r()}
+function ai(){P.innerHTML=`<p class="note">${t('n2a')}</p><div class="chips">${Q.map((q,i)=>`<button data-q="${i}">${q[lg][0]}</button>`).join('')}</div><div class="ans" id="an" aria-live="polite"></div>`;
+const sh=()=>an.textContent=S.ans<0?t('pk'):Q[S.ans][lg][1];P.querySelectorAll('.chips button').forEach(b=>b.onclick=()=>{S.ans=+b.dataset.q;sh()});sh()}
+const V={d:dash,r:raw,a:ai};
+function render(){
+document.documentElement.lang=L[lg];document.title="Industry Hub";
+document.querySelectorAll('[data-i]').forEach(e=>e.textContent=t(e.dataset.i));
+document.querySelectorAll('[data-p]').forEach(e=>e.placeholder=t(e.dataset.p));
+document.querySelectorAll('[data-a]').forEach(e=>e.setAttribute('aria-label',t(e.dataset.a)));
+document.querySelectorAll('[data-l]').forEach(b=>{const on=+b.dataset.l==lg;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
+document.getElementById('mods').innerHTML=MD.map(m=>`<div class="mod"><h3>${m[0]}</h3><p>${m[1][lg]}</p></div>`).join('');
+document.getElementById('hw').innerHTML=ST.map((s,i)=>`<li class="st"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[i]}</svg><em>${i+1}</em></span><h3>${s[lg][0]}</h3><p>${s[lg][1]}</p></li>`).join('');
+V[S.tab]();fm.textContent=S.fm?t(S.fm):''}
+document.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{lg=+b.dataset.l;try{localStorage.setItem('ih-lang',L[lg])}catch(e){}render()});
+document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-t]').forEach(x=>x.setAttribute('aria-selected',x===b));S.tab=b.dataset.t;V[S.tab]()});
+f.onsubmit=e=>{e.preventDefault();S.fm=/^\S+@\S+\.\S+$/.test(em.value)?'ok':'er';fm.textContent=t(S.fm)};
+render();
+</script></body></html>
